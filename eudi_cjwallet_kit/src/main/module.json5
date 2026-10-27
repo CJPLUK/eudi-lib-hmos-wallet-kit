@@ -1,0 +1,9 @@
+{
+  "module": {
+    "name": "eudi_cjwallet_kit",
+    "type": "har",
+    "deviceTypes": [
+      "default"
+    ]
+  }
+}

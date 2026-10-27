@@ -1,0 +1,65 @@
+[package]
+  cjc-version = "1.1.3"
+  compile-option = "--dy-std --cfg=\"${COMPILE_CONDITION}\""
+  description = "CangjieUI Application"
+  name = "ohos_app_cangjie_eudi_cjwallet_kit"
+  output-type = "dynamic"
+  src-dir = "./src/main/cangjie"
+  target-dir = ""
+  version = "1.0.0"
+
+[dependencies]
+  # wallet-kit 集成枢纽:消费 11 上游(sibling-dep 规范,../../ 引依赖;hvigorfile auto-fetch)
+  [dependencies.ohos_app_cangjie_eudi_cjmdoc_data_model]
+    path = "../../eudi_lib_mdoc_data_model/eudi_cjmdoc_data_model"
+  [dependencies.ohos_app_cangjie_eudi_cjmdoc_security]
+    path = "../../eudi_lib_mdoc_security/eudi_cjmdoc_security"
+  [dependencies.ohos_app_cangjie_eudi_cjmdoc_transfer]
+    path = "../../eudi_lib_mdoc_transfer/eudi_cjmdoc_transfer"
+  [dependencies.ohos_app_cangjie_eudi_cjwallet_storage]
+    path = "../../eudi_lib_wallet_storage/eudi_cjwallet_storage"
+  [dependencies.ohos_app_cangjie_eudi_cjsdjwt]
+    path = "../../eudi_lib_sdjwt/eudi_cjsdjwt"
+  [dependencies.ohos_app_cangjie_eudi_cjopenid4vp_vci]
+    path = "../../eudi_lib_openid4vp_vci/eudi_cjopenid4vp_vci"
+  [dependencies.ohos_app_cangjie_eudi_cjstatium]
+    path = "../../eudi_lib_statium/eudi_cjstatium"
+  [dependencies.ohos_app_cangjie_eudi_cjjose]
+    path = "../../eudi_lib_jose/eudi_cjjose"
+  [dependencies.ohos_app_cangjie_eudi_cjx509]
+    path = "../../eudi_lib_x509/eudi_cjx509"
+  [dependencies.eudi_lib_core_crypto]
+    path = "../../eudi_lib_core_crypto/eudi_cjcrypto"
+  [dependencies.ohos_app_cangjie_eudi_cjcbor]
+    path = "../../eudi_lib_cbor/eudi_cjcbor"
+  [dependencies.ohos_app_cangjie_eudi_cjetsi_1196x2]
+    path = "../../eudi_lib_etsi_1196x2/eudi_cjetsi_1196x2"
+
+
+  [profile]
+  [profile.build]
+    incremental = true
+    lto = ""
+    [profile.build.combined]
+      ohos_app_cangjie_eudi_cjwallet_kit = "dynamic"
+  [profile.customized-option]
+    debug = "-g -Woff all -Won apilevel-check"
+    release = "--fast-math -O2 -s -Woff all -Won apilevel-check"
+  [profile.test]
+
+[target.aarch64-linux-ohos]
+  compile-option = "-B \"${DEVECO_CANGJIE_HOME}/build-tools/third_party/llvm/bin\" -B \"${DEVECO_OH_NATIVE_HOME}/sysroot/usr/lib/aarch64-linux-ohos\" -L \"${DEVECO_OH_NATIVE_HOME}/sysroot/usr/lib/aarch64-linux-ohos\" -L \"${DEVECO_OH_NATIVE_HOME}/llvm/lib/clang/15.0.4/lib/aarch64-linux-ohos\" -L \"${DEVECO_OH_NATIVE_HOME}/llvm/lib/aarch64-linux-ohos\" --sysroot \"${DEVECO_OH_NATIVE_HOME}/sysroot\""
+[target.aarch64-linux-ohos.bin-dependencies]
+  path-option = ["${AARCH64_LIBS}", "${AARCH64_MACRO_LIBS}", "${AARCH64_KIT_LIBS}", "../entry/libs/stdx"]
+  package-option = {}
+
+[target.x86_64-linux-ohos]
+  compile-option = "-B \"${DEVECO_CANGJIE_HOME}/build-tools/third_party/llvm/bin\" -B \"${DEVECO_OH_NATIVE_HOME}/sysroot/usr/lib/x86_64-linux-ohos\" -L \"${DEVECO_OH_NATIVE_HOME}/sysroot/usr/lib/x86_64-linux-ohos\" -L \"${DEVECO_OH_NATIVE_HOME}/llvm/lib/clang/15.0.4/lib/x86_64-linux-ohos\" -L \"${DEVECO_OH_NATIVE_HOME}/llvm/lib/x86_64-linux-ohos\" --sysroot \"${DEVECO_OH_NATIVE_HOME}/sysroot\""
+[target.x86_64-linux-ohos.bin-dependencies]
+  path-option = ["${X86_64_OHOS_LIBS}", "${X86_64_OHOS_MACRO_LIBS}", "${X86_64_OHOS_KIT_LIBS}"]
+
+[target.aarch64-apple-darwin]
+  compile-option = "--link-options=\"-rpath @executable_path/../../../sdk/cangjie/build-tools/runtime/lib/darwin_aarch64_cjnative\" --link-options=\"-rpath @executable_path/../../../sdk/cangjie/api/lib/darwin_aarch64_cjnative/kit\" --link-options=\"-rpath @executable_path/../../../sdk/cangjie/api/lib/darwin_aarch64_cjnative/ohos\" --link-options=\"-rpath @executable_path/../../../sdk/cangjie/api/macro/ohos\" --link-options=\"-rpath @executable_path/module/cj_sdk_libraries\""
+[target.aarch64-apple-darwin.bin-dependencies]
+  path-option = ["${AARCH64_LIBS}", "${AARCH64_MACRO_LIBS}", "${AARCH64_KIT_LIBS}"]
+  package-option = {}

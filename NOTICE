@@ -1,0 +1,39 @@
+eudi_lib_wallet_kit
+Copyright (c) 2026 the eudi_lib_wallet_kit contributors
+
+This product is a Cangjie (仓颉) / HarmonyOS port of the EU Digital Identity
+Wallet kit (protocol facade / integration hub) for Swift:
+
+    eudi-lib-ios-wallet-kit
+    Copyright (c) European Commission
+    Licensed under the Apache License, Version 2.0
+    https://github.com/eu-digital-identity-wallet/eudi-lib-ios-wallet-kit
+
+The EudiWallet facade and its issuance / presentation / storage / support
+service layers are reimplemented in Cangjie with the original Swift sources
+used as the reference implementation.
+
+This product depends on and/or bundles the following third-party software
+(all consumed as pinned third_party clones; Apache-2.0 unless noted):
+
+  - eudi_lib_mdoc_data_model    — Document / DeviceResponse / DeviceRequest types
+  - eudi_lib_mdoc_security      — SecureArea / session signing
+  - eudi_lib_mdoc_transfer      — BLE proximity presentation (mdoc GATT)
+  - eudi_lib_wallet_storage     — document + key storage
+  - eudi_lib_sdjwt              — SD-JWT credentials
+  - eudi_lib_openid4vp_vci      — OpenID4VCI issuance + OpenID4VP presentation engine
+  - eudi_lib_statium            — credential status (status list)
+  - eudi_lib_jose               — JOSE / JWE
+  - eudi_lib_x509               — certificate chain validation
+  - eudi_lib_core_crypto        — cryptographic primitives
+  - eudi_lib_cbor               — CBOR encoding
+  - cangjie-stdx 1.1.3.1 (Apache-2.0) — bundled under entry/libs/stdx/
+  - OpenSSL runtime libraries (libcrypto_openssl.z.so, libssl_openssl.z.so)
+    and libsecurec.so, bundled under entry/libs/arm64-v8a/ for on-device
+    stdx.crypto / HUKS execution (consumed transitively).
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this project except in compliance with the License. You may obtain a
+copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
